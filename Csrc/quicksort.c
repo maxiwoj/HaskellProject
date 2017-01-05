@@ -1,19 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 void quicksort(int* tab, int start, int lastIndex);
 
 int main(int argc, char const *argv[]) {
-  const int size = 13;
-  int tab[] = {2,4,1,5,65,23,5,5,31,4,6,5,3};
+  const int size = 1000;
+  //int tab[] = {2,4,1,5,65,23,5,5,31,4,6,5,3};
   //int tab[] = {1,2,3,4,5,6,7,8,9,10,11,12,13};
   //int tab[] = {5,5,5,5,5,5,5,5,5,5,5,5,5};
   //int tab[] = {1,2,3,4,5,6,7,13,9,10,11,12,8};
+  int i;
+  int *tab = (int*) malloc(size*sizeof(int));
+  for(i=0;i<size;i++){
+    tab[i]=rand();
+  }
+  clock_t start;
+  double duration;
+  start = clock();
   quicksort(tab, 0, size-1);
-  for(int i = 0; i < size; i++){
+  duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
+  printf("%f\n", duration);
+  /*for(int i = 0; i < size; i++){
     printf("%d, ", tab[i]);
   }
-  printf("\b\b  \n");
+  printf("\b\b  \n");*/
+  free(tab);
   return 0;
 }
 
