@@ -4,8 +4,23 @@ module Quicksort
 
 quicksort :: Ord a => [a] -> [a]
 quicksort [] = []
-quicksort (x:xs) = (quicksort less) ++ [x] ++ equals ++ (quicksort more)
+quicksort (x:xs) = (quicksort (getLt parts)) ++ (x:(getEq parts)) ++ (quicksort (getGt parts))
   where
-    more = [e | e <- xs, e > x]
-    less = [e | e <- xs, e < x]
-    equals = [e | e <- xs, e == x]
+    parts = part xs x
+
+getGt :: (a,b,c) -> a
+getGt (x,_,_) = x
+
+getEq :: (a,b,c) -> b
+getEq (_,x,_) = x
+
+getLt :: (a,b,c) -> c
+getLt (_,_,x) = x
+
+part l y = f [] [] [] l
+  where
+    f gt eq lt (x:xs) =
+      if x > y then f (x:gt) eq lt xs
+      else if x == y then f gt (x:eq) lt xs
+      else f gt eq (x:lt) xs
+    f gt eq lt [] = (gt, eq, lt)

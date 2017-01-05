@@ -7,7 +7,11 @@ data FailureTable a = FailureTable {
     next :: (a -> FailureTable a)           --What to do with the next character from data where we are looking for pattern
 }
 
-
+{-
+First argument: pattern
+Second argument: data where to find pattern
+Resault: List of indexes where pattern starts in data
+-}
 findPattern :: Eq a => [a] -> [a] -> [Int]
 
 makeFailureTable :: Eq a => [a] -> FailureTable a
