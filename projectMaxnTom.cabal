@@ -18,6 +18,8 @@ library
   exposed-modules:     Lib
                      , Quicksort
                      , MergeSort
+                     , KMP
+                     , Regression
   build-depends:       base >= 4.7 && < 5
                      , criterion
   default-language:    Haskell2010

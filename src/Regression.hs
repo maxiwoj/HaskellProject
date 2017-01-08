@@ -4,6 +4,12 @@ module Regression
     cost,
     getY
   ) where
+-- First argument: list of arguments for some func
+-- Second argument: list of function results for corresponding argumets (first arg)
+
+regress :: Fractional a => [a] -> [a] -> (a,a)
+regress x y = gradient_descent (0,0) x y 0.01 10000
+
 
 cost1el :: Fractional a => (a,a) -> a -> a -> a
 cost1el (theta_a,theta_b) x_el y_el = (theta_a * x_el + theta_b - y_el) ^ 2
@@ -23,9 +29,6 @@ gradient_step :: Fractional a => (a,a) -> [a] -> [a] -> a -> (a,a)
 gradient_step (theta_a, theta_b) x y alpha = (theta_a - (alpha * delta_a), theta_b - (alpha * delta_b)) where
   delta_a = 2/((fromIntegral (length x))) * (foldl1 (+) (zipWith (\ x_el y_el -> (theta_a * x_el + theta_b - y_el) * x_el) x y))
   delta_b = 2/((fromIntegral (length x))) * (foldl1 (+) (zipWith (\ x_el y_el -> theta_a * x_el + theta_b - y_el) x y))
-
-regress :: Fractional a => [a] -> [a] -> (a,a)
-regress x y = gradient_descent (0,0) x y 0.01 10000
 
 getY :: Fractional a => (a,a) -> a -> a
 getY (theta_a, theta_b) x = theta_a * x + theta_b
