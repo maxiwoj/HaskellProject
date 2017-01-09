@@ -1,9 +1,11 @@
 module MergeSort
-  ( mergeSort
+  ( mergeSort,
+    merge
   ) where
 
 
 --Funkcja przyjmujace 2 listy i złaczajaca je sortujac
+merge :: Ord a => [a] -> [a] -> [a]
 merge xs [] = xs
 merge [] xs = xs
 merge (x:xs) (y:ys)
@@ -16,5 +18,5 @@ mergeSort :: Ord a => [a] -> [a]
 mergeSort [] = []
 mergeSort [x] = [x]
 mergeSort xs = merge (mergeSort (fsthalf xs)) (mergeSort (sndhalf xs)) where
-  fsthalf xs = take (length xs `div` 2) xs
-  sndhalf xs = drop (length xs `div` 2) xs
+  fsthalf = take (length xs `div` 2)
+  sndhalf = drop (length xs `div` 2)

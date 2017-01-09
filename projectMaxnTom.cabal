@@ -38,7 +38,8 @@ test-suite projectMaxnTom-test
   main-is:             Spec.hs
   build-depends:       base
                      , projectMaxnTom
-  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+                     , QuickCheck
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N -O2
   default-language:    Haskell2010
 
 source-repository head
