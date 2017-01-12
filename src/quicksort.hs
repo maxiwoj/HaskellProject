@@ -1,5 +1,6 @@
 module Quicksort
-  ( quicksort
+  ( quicksort,
+    part
   ) where
 
 quicksort :: Ord a => [a] -> [a]
