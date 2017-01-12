@@ -1,26 +1,11 @@
+#include "KMP.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 
 void failure(int *table, char* pattern);
-int* KMP(char* pattern, char* data);
-
-int main(int argc, char **argv){
-    //main body for test purpose. Maybe should be different method in real test
-    if(argc < 3) {
-        printf("to few arguments\n");
-        return 2;
-    }
-    int * res = KMP(argv[1], argv[2]);
-    int i;
-    printf("[ ");
-    for(i = 0; res[i] != -1; i++){
-        printf(" %d,", res[i]);
-    }
-    printf("\b]\n");
-    return 0;
-}
 
 int* KMP(char* pattern, char* data){
     int size = strlen(pattern);
@@ -47,7 +32,7 @@ int* KMP(char* pattern, char* data){
                 }
                 else {
                     free (resault);
-                    puts ("Error (re)allocating memory");
+                    fprintf(stderr, "Error (re)allocating memory\n");
                     exit (1);
                 }
             }
