@@ -11,10 +11,37 @@
 using namespace std;
 
 int main(int argc, char **argv){
-  KMPBench kmptest("test","atsesatestestsetstsstadsasttdsadsajdhasjkdhaskdtststsftststtststtstststtstsetsesttsetsetstetstetstetstesttestetstsstetstetstesteststetst");
-  cout.precision(17);
 
-  cout << fixed << bench(&kmptest) << endl;
+  const int KMPdataSize = 1000001;
+  const int KMPpatternSize = 6;
+  char *kmpDataTab = (char*) malloc(KMPdataSize*sizeof(char));
+  char *kmpPatternTab = (char*) malloc(KMPpatternSize*sizeof(char));
+  ifstream kmpData ("data/KMP.txt");
+  if (kmpData.is_open())
+  {
+    int i;
+    for(i=0;i<KMPpatternSize;i++){
+      kmpData >> kmpPatternTab[i];
+    }
+    kmpPatternTab[i] = '\0';
+
+    for(i=0;i<KMPdataSize;i++){
+      kmpData >> kmpDataTab[i];
+    }
+    kmpDataTab[i] = '\0';
+    kmpData.close();
+  }
+  else{
+    cout << "data/KMP.txt could not be open. Exit" << endl;
+    return 0;
+  }
+
+  cout.precision(17);
+  KMPBench kmptest(kmpPatternTab,kmpDataTab);
+  cout << fixed << "kmp 1000000: \t" << bench(&kmptest) << endl;
+
+  free(kmpDataTab);
+  free(kmpPatternTab);
 
   const int size = 10000;
   int *tab = (int*) malloc(size*sizeof(int));
@@ -33,10 +60,10 @@ int main(int argc, char **argv){
   }
 
   QuicksortBench qstest(tab, size);
-  cout << bench(&qstest) << endl;
+  cout <<"quicksort 10000: \t" << bench(&qstest) << endl;
 
   MergeBench mstest(tab, size);
-  cout << bench(&mstest) << endl;
+  cout << "merge sort 10000: \t"<< bench(&mstest) << endl;
 
   free(tab);
 

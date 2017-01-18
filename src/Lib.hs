@@ -7,14 +7,21 @@ import Criterion.Main
 import Quicksort
 import MergeSort
 import Regression
+import KMP
 
 someFunc :: IO ()
 someFunc =  do
   contentNumber10k <- readFile "Csrc/data/NumbersToSort10k.txt"
   let numbersToSort  = map readInt . words $ contentNumber10k
+  contetKMP <- readFile "Csrc/data/KMP.txt"
+  let kmplines = lines contetKMP
+  let kmppattern = kmplines !! 0
+  let kmpdata = kmplines !! 1
+
   defaultMain [
       bench "quicksort 10000" $ nf quicksort numbersToSort,
       bench "mergeSort 10000" $ nf mergeSort numbersToSort,
+      bench "kmp 1000000" $ nf (findPattern kmppattern) kmpdata,
       bench "Linear Regression 10000 steps" $ nf (regress [(1::Double)..10]) [(11::Double)..20]
     ]
 
