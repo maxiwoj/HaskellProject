@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
+#include <fstream>
 
 #include "bench.hpp"
 #include "KMPBench.hpp"
@@ -14,12 +15,22 @@ int main(int argc, char **argv){
 
   cout << fixed << bench(&kmptest) << endl;
 
-  const int size = 1000000;
-  int i;
+  const int size = 10000;
   int *tab = (int*) malloc(size*sizeof(int));
-  for(i=0;i<size;i++){
-    tab[i]=rand();
+  ifstream sortData ("data/NumbersToSort10k.txt");
+  if (sortData.is_open())
+  {
+    int i;
+    for(i=0;i<size;i++){
+      sortData >> tab[i];
+    }
+    sortData.close();
   }
+  else{
+    cout << "data/NumbersToSort10k.txt could not be open. Exit" << endl;
+    return 0;
+  }
+
   QuicksortBench qstest(tab, size);
   cout << bench(&qstest) << endl;
 
