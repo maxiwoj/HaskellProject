@@ -1,5 +1,7 @@
 name:                projectMaxnTom
 version:             0.1.0.0
+data-files:          Csrc/data/NumbersToSort10k.txt
+                   , Csrc/data/KMP.txt
 synopsis:            Initial project template from stack
 description:         Please see README.md
 homepage:            https://github.com/githubuser/projectMaxnTom#readme
