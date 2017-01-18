@@ -6,6 +6,7 @@
 #include "bench.hpp"
 #include "KMPBench.hpp"
 #include "QuicksortBench.hpp"
+#include "MergeBench.hpp"
 
 using namespace std;
 
@@ -33,6 +34,9 @@ int main(int argc, char **argv){
 
   QuicksortBench qstest(tab, size);
   cout << bench(&qstest) << endl;
+
+  MergeBench mstest(tab, size);
+  cout << bench(&mstest) << endl;
 
   free(tab);
 
