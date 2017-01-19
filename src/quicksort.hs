@@ -3,6 +3,9 @@ module Quicksort
     part
   ) where
 
+{-
+As input get list of elements that can be ordered. In output there is list sorted using quicksort alghoritm.
+-}
 quicksort :: Ord a => [a] -> [a]
 quicksort [] = []
 quicksort (x:xs) = (quicksort (getLt parts)) ++ (x:(getEq parts)) ++ (quicksort (getGt parts))
