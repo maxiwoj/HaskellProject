@@ -1,8 +1,8 @@
 #include "KMP.h"
 
-#include <stdio.h>
+#include <stdio.h>  //fprintf -- error message
 #include <stdlib.h>
-#include <string.h>
+#include <string.h> //strlen
 
 
 void failure(int *table, char* pattern);

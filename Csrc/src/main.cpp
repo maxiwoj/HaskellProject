@@ -7,6 +7,7 @@
 #include "KMPBench.hpp"
 #include "QuicksortBench.hpp"
 #include "MergeBench.hpp"
+#include "RegressionBench.hpp"
 
 using namespace std;
 
@@ -66,6 +67,29 @@ int main(int argc, char **argv){
   cout << "merge sort 10000: \t"<< bench(&mstest) << endl;
 
   free(tab);
+
+  const int regressionDataSize = 100;
+  double *x = (double*) malloc(size*sizeof(double));
+  double *y = (double*) malloc(size*sizeof(double));
+  ifstream regressionData ("data/testSetForRegression.txt");
+  if (regressionData.is_open())
+  {
+    int i;
+    for(i=0;i<size;i++){
+      regressionData >> x[i] >> y[i];
+    }
+    regressionData.close();
+  }
+  else{
+    cout << "data/testSetForRegression.txt could not be open. Exit" << endl;
+    return 0;
+  }
+
+  RegressionBench regresstest(x, y, regressionDataSize);
+  cout << "regression 10000 steps: \t"<< bench(&regresstest) << endl;
+
+  free(x);
+  free(y);
 
   return 0;
 }

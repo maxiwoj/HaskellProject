@@ -9,10 +9,10 @@ CDIR=src
 
 LIBS=
 
-_DEPS = quicksort.h KMP.h bench.hpp benchable.hpp KMPBench.hpp QuicksortBench.hpp mergeSort.hpp MergeBench.hpp
+_DEPS = quicksort.h KMP.h bench.hpp benchable.hpp KMPBench.hpp QuicksortBench.hpp mergeSort.hpp MergeBench.hpp regression.hpp RegressionBench.hpp
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = quicksort.o KMP.o bench.o KMPBench.o QuicksortBench.o mergeSort.o MergeBench.o main.o
+_OBJ = quicksort.o KMP.o bench.o KMPBench.o QuicksortBench.o mergeSort.o MergeBench.o regression.o RegressionBench.o main.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: $(CDIR)/%.c $(DEPS)
