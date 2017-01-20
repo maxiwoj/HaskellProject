@@ -12,6 +12,8 @@ main = do
   quickCheck prop_partFromQS
   runTestTT testMerge
   runTestTT testKMP
+  runTestTT testCost
+  runTestTT testGetY
 
 
 -- prop_merge :: [Int] -> [Int] -> Bool
@@ -33,3 +35,9 @@ testKMP = TestCase $ assertEqual "Should give list of indexes where string test 
 
 testMerge :: Test
 testMerge = TestCase $ assertEqual "should give a sorted list" [1..1000] (mergeSort [1..1000])
+
+testCost :: Test
+testCost = TestCase $ assertEqual "should return distance for every item in the list from the function" (1/10 * (foldl1 (+) [a^2 | a <- [1..10]])) (cost (0,0) [1..10] [1..10])
+
+testGetY :: Test
+testGetY = TestCase $ assertEqual "Should return value of y for given linear function" ((\x -> 3 * x + 2) 53) (getY (3,2) 53)
