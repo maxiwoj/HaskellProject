@@ -4,6 +4,7 @@ import MergeSort
 import Data.List
 import Test.HUnit
 import KMP
+import Regression
 
 -- main :: IO ()
 main = do
