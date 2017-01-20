@@ -3,8 +3,6 @@
 #include <cstdlib> //malloc, free
 #include <cstring> //memcpy
 
-#include <iostream>
-
 MergeBench::MergeBench(int* tab, int size) :
   _sourceTab(tab), _sourceSize(size) {}
 

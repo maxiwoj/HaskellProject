@@ -1,6 +1,6 @@
 #include "KMPBench.hpp"
 #include "KMP.h"
-#include <cstdlib>
+#include <cstdlib> //free
 
 KMPBench::KMPBench(char* pattern, char* data) :
   _pattern(pattern), _data(data) {}
