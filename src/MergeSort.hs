@@ -1,10 +1,17 @@
+{-|
+Module      : W
+Description : Merge sort algorithm
+Copyright   : (c) Maksymilian Wojczuk, 2017
+
+Implementation of merge sort alghoritm.
+-}
 module MergeSort
   ( mergeSort,
     merge
   ) where
 
 
---Function takes 2 sorted lists and merges them into one sorted list
+-- |Function takes 2 sorted lists and merges them into one sorted list
 merge :: Ord a => [a] -> [a] -> [a]
 merge xs [] = xs --If one of the list is empty function returns the not empty list
 merge [] xs = xs
@@ -13,7 +20,7 @@ merge (x:xs) (y:ys)
   | otherwise     = y : merge (x:xs) ys --the first element is the smaller one
 
 
---Głowna funkcja odpowiadajaca za sortowanie Merge
+-- |Sorts list of ord elements using merge sort algorithm
 mergeSort :: Ord a => [a] -> [a]
 mergeSort [] = []
 mergeSort [x] = [x]
