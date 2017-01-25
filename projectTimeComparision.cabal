@@ -1,4 +1,4 @@
-name:                projectMaxnTom
+name:                projectTimeComparision
 version:             0.1.0.0
 data-files:          Csrc/data/NumbersToSort10k.txt
                    , Csrc/data/KMP.txt
@@ -26,20 +26,20 @@ library
                      , criterion
   default-language:    Haskell2010
 
-executable projectMaxnTom-exe
+executable projectTimeComparision-exe
   hs-source-dirs:      app
   main-is:             Main.hs
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N -O2
   build-depends:       base
-                     , projectMaxnTom
+                     , projectTimeComparision
   default-language:    Haskell2010
 
-test-suite projectMaxnTom-test
+test-suite projectTimeComparision-test
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
   main-is:             Spec.hs
   build-depends:       base
-                     , projectMaxnTom
+                     , projectTimeComparision
                      , QuickCheck
                      , HUnit
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
