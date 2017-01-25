@@ -7,4 +7,6 @@ linear regression or KMP.
 To get the documentation type 'cabal install criterion' and then 'cabal haddock'.
 
 ###Build and run
-To build the project simply type 'stack build', tu run it 'stack exec projectTimeComparision-exe' and to run tests: 'stack test'
+To build the project simply type 'stack build', to run it 'stack exec projectTimeComparision-exe' and to run tests: 'stack test'
+
+To build C/C++ sources change directory to Csrc and make directory obj if not exist. Then run 'make' to build sources using makefile. To run type './benchmark.exe'.
